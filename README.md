@@ -35,6 +35,14 @@ Browser data from another host does not transfer automatically to this address.
 
 Default weights are interest 40%, preferred work 20%, career goals 15%, and career outlook 25%; visitors can adjust them. Missing personal answers are omitted, with response coverage and tentative results shown. Each block ranks independently, and suggested pairs contain one eligible course from each block.
 
-Previously completed courses are excluded. The ITBA path requires Mobile Business and Visual Analytics; previous completion of either requires programme clarification. When the target career window extends beyond 2035, market ratings are omitted from scoring.
+The ITBA path requires Mobile Business and Visual Analytics. When the target career window extends beyond 2035, market ratings are omitted from scoring.
+
+## Semester-one history and semester-two selection
+
+The questionnaire ranks semester-two specializations (SS 2027, blocks 2A and 2B). The Moodle voting deadline is 4 November 2026, supplied by the site owner; no closing time was specified.
+
+The context screen separately records the five semester-one specializations (WS 2026/27, blocks 1A and 1B) from the supplied semester-one guide, pp. 2–3 and 4–10. `context.completedSemester1` stores that background without changing scores or excluding semester-two options. IT Innovation Management automatically supplies the existing recommended-background hint. Existing profiles migrate the previous `context.innovation` flag into this list; the list is authoritative afterwards.
+
+Semester-two courses are being selected for the first time, so they have no completion checkboxes. Legacy `context.completed` selections are ignored when loading a profile; the compatibility field remains empty, so old checkboxes cannot silently exclude new choices or create an ITBA conflict. The source PDF is not published.
 
 To maintain the tool, verify the original evidence sources before updating dates, assumptions, and ratings in `data.mjs`.

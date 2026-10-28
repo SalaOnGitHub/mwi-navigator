@@ -1,8 +1,8 @@
-import {COURSES, QUESTIONS, DEFAULT_WEIGHTS} from './data.mjs';
+import {COURSES, QUESTIONS, DEFAULT_WEIGHTS, SEMESTER_ONE_COURSES} from './data.mjs';
 export const VERSION = 1;
 export function freshState() {
  return {version:VERSION,lang:'de',view:'home',step:0,answers:{},weights:{...DEFAULT_WEIGHTS},
-  context:{graduation:2028,mobility:'dach',experience:'student',completed:[],itba:false,code:'unknown',innovation:false,learning:'yes'},
+  context:{graduation:2028,mobility:'dach',experience:'student',completed:[],completedSemester1:[],itba:false,code:'unknown',innovation:false,learning:'yes'},
   compare:[],filter:'all'};
 }
 export function sanitizeState(raw) {
@@ -18,8 +18,12 @@ export function sanitizeState(raw) {
  const c=raw.context || {};
  if(Number.isInteger(c.graduation)&&c.graduation>=2026&&c.graduation<=2040) s.context.graduation=c.graduation;
  for(const [k,options] of Object.entries({mobility:['austria','dach','europe','global'],experience:['student','switch','working'],code:['none','basic','confident','unknown'],learning:['yes','some','no']})) if(options.includes(c[k])) s.context[k]=c[k];
- s.context.itba=c.itba===true;s.context.innovation=c.innovation===true;
- s.context.completed=Array.isArray(c.completed)?[...new Set(c.completed.filter(id=>COURSES.some(x=>x.id===id)))]:[];
+ s.context.itba=c.itba===true;
+ // Preserve the previous standalone innovation selection for existing profiles.
+ s.context.completedSemester1=Array.isArray(c.completedSemester1)?[...new Set(c.completedSemester1.filter(id=>SEMESTER_ONE_COURSES.some(x=>x.id===id)))]:c.innovation===true?['innovation']:[];
+ s.context.innovation=s.context.completedSemester1.includes('innovation');
+ // Semester-two courses are being chosen for the first time. Ignore the legacy
+ // completion checkboxes so older profiles cannot silently exclude new options.
  s.compare=Array.isArray(raw.compare)?[...new Set(raw.compare.filter(id=>COURSES.some(x=>x.id===id)))].slice(0,3):[];
  s.filter=['all','2A','2B'].includes(raw.filter)?raw.filter:'all';
  return s;
@@ -77,3 +81,4 @@ export function recommend(state) {
  const recommended=state.context.itba?(conflict?null:pairs.find(p=>p.required)):pairs.find(p=>p.eligible&&p.score!==null)||null;
  return {results,ranked,pairs,recommended,conflict,ready:isReady(state)};
 }
+

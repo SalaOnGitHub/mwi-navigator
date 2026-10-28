@@ -1,11 +1,20 @@
 export const L = (de, en) => ({de, en});
 export const REVIEWED = '2026-10-22';
+// Semester-one history is background, not part of the semester-two ranking.
+export const SEMESTER_ONE_COURSES = [
+ {id:'supply-chain',name:'Digital Supply Chain Applications',block:'1A',page:'4–5'},
+ {id:'innovation',name:'IT Innovation Management',block:'1A',page:'6'},
+ {id:'systems',name:'Systems Engineering',block:'1A',page:'7'},
+ {id:'ai-enterprises',name:'Artificial Intelligence in Enterprises',block:'1B',page:'8–9'},
+ {id:'consulting',name:'Consulting',block:'1B',page:'10'}
+];
 export const DEFAULT_WEIGHTS = {interest:40, work:20, career:15, market:25};
 export const DIMENSIONS = {
  interest:L('Interessen','Interests'), work:L('Arbeitsstil','Preferred work'),
  career:L('Karriereziele','Career goals'), market:L('Berufsperspektive','Career outlook')
 };
 export const SOURCES = [
+ {id:'guide-semester1',title:'MWI Spezialisierungsfolder · WS 2026/27 · 1. Semester',type:L('Studiengang · absolvierte Spezialisierungen','Programme · completed specializations'),date:'WS 2026/27',region:'FH Technikum Wien',until:null,url:'https://www.technikum-wien.at/studiengaenge/master-wirtschaftsinformatik/',note:L('Bereitgestellter Folder für das 1. Semester, S. 2–3: Blöcke 1A und 1B; Kursbeschreibungen S. 4–10. Dient zur Erfassung des Vorwissens. Die Empfehlungen beziehen sich auf das 2. Semester (SS 2027). Der Link führt zur Studiengangsseite, nicht zur bereitgestellten Datei.','Supplied semester-one guide, pp. 2–3: blocks 1A and 1B; course descriptions on pp. 4–10. Used to record prior study. Recommendations concern semester two (summer semester 2027). The link leads to the programme page, not the supplied file.')},
  {id:'guide',title:'MWI Spezialisierungsfolder · SS 2027',type:L('Studiengang · Kursinhalte','Programme · course content'),date:'SS 2027',region:'FH Technikum Wien',until:null,url:'https://www.technikum-wien.at/studiengaenge/master-wirtschaftsinformatik/',note:L('Bereitgestellter Folder, S. 3–9. Der Dateiname nennt SS2026, der Dokumentinhalt SS2027. Der Link führt zur Studiengangsseite, nicht zur bereitgestellten Datei.','Supplied guide, pp. 3–9. The filename says SS2026; the document itself says SS2027. The link leads to the programme page, not the supplied file.')},
  {id:'ams-it',title:'AMS · IT-Analyse und -Organisation',type:L('Stellenanzeigen & kurzfristiger Ausblick','Job advertisements & near-term outlook'),date:'2025 / 2026–2028',region:L('Österreich','Austria'),until:2028,url:'https://jobbarometer.ams.at/berufe/301',note:L('2025 weniger Anzeigen als 2024, bei tendenziell positivem Ausblick 2026–2028. Breite IT-Berufsgruppe; Audit und Technologiestrategie werden nicht separat gemessen.','Fewer ads in 2025 than 2024, with a generally positive 2026–2028 outlook. Broad IT occupational group; audit and technology strategy are not measured separately.')},
  {id:'ams-product',title:'AMS · ProduktmanagerIn',type:L('Stellenanzeigen & kurzfristiger Ausblick','Job advertisements & near-term outlook'),date:'2025 / 2026–2028',region:L('Österreich','Austria'),until:2028,url:'https://jobbarometer.ams.at/berufe/286/1195',note:L('Positiver kurzfristiger Trend trotz zuletzt weniger Anzeigen. Umfasst auch physische Produkte; kein isolierter Markt für digitale Produkte.','Positive near-term trend despite fewer recent ads. Includes physical products; not an isolated digital-product market.')},
@@ -117,3 +126,4 @@ export const PAIRS = {
  'mobile-sap':L('Digitale Kundenerlebnisse mit den dahinterliegenden Unternehmensprozessen zusammendenken.','Connect digital customer experiences with the enterprise processes behind them.'),
  'mobile-visual':L('Digitale Produkte anhand von Nutzerverständnis und anschaulichen Daten weiterentwickeln.','Develop digital products using customer understanding and clear data insights.')
 };
+

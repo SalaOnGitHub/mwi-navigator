@@ -21,3 +21,6 @@ dialog{border:1px solid var(--line);border-radius:15px;background:var(--bg);colo
 .rating-row{grid-template-columns:repeat(5,minmax(0,1fr))}
 .rating.unsure{grid-column:1/-1;flex-direction:row;gap:6px;min-height:34px}
 .rating.unsure small{margin-top:0}
+.hero-copy>.notice{margin-top:20px;font-size:12px}
+.quiz-main>.notice+.form-grid{margin-top:22px}
+
