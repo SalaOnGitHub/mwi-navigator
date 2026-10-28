@@ -67,10 +67,10 @@ function home(){
 const STEPS=[L('Dein Rahmen','Your context'),L('Deine Interessen','Your interests'),L('Was dich vertieft interessiert','A closer look'),L('Dein Arbeitsstil','Your preferred work'),L('Deine Karriereziele','Your career goals'),L('Dein Startpunkt','Your starting point')];
 const STEP_DESCRIPTIONS=[
  L('Ein paar Eckdaten helfen, deine Optionen und den Zeithorizont richtig einzuordnen.','A few details help put your options and time horizon in context.'),
- L('Antworte spontan. Es geht um Neugier, nicht darum, was du schon beherrschst.','Answer intuitively. This is about curiosity, not what you already know.'),
- L('Welche Themen würdest du gern genauer kennenlernen?','Which topics would you like to explore further?'),
+ L('Wie sehr sprechen dich diese Aufgaben an? Denk daran, womit du dich gern beschäftigen würdest – unabhängig davon, was du bereits kannst.','How much do these tasks appeal to you? Think about what you would enjoy working on, regardless of what you can already do.'),
+ L('Wie sehr sprechen dich diese weiteren Aufgaben an? Entscheidend ist deine Neugier, nicht deine bisherige Erfahrung.','How much do these further tasks appeal to you? Focus on your curiosity, not your previous experience.'),
  L('Stell dir einen typischen Arbeitstag vor. Welche Tätigkeiten passen zu dir?','Imagine a typical working day. Which activities would fit you?'),
- L('Du musst dich noch nicht festlegen. Bewerte, welche Richtungen dich heute ansprechen.','You do not need to commit yet. Rate the directions that appeal to you today.'),
+ L('Welche Aufgaben würdest du gern über längere Zeit übernehmen? Du musst dich noch nicht festlegen.','Which tasks would you enjoy taking on over the longer term? You do not need to commit yet.'),
  L('Vorwissen beeinflusst die Vorbereitung, nicht dein Potenzial.','Prior knowledge affects preparation, not your potential.')
 ];
 function select(name,label,options,value){
@@ -88,7 +88,7 @@ function contextFields(){
 }
 function ratingQuestion(q,index){
  const answer=state.answers[q.id],labels=[tr('Gar nicht','Not at all'),tr('Eher wenig','A little'),tr('Teils / teils','Somewhat'),tr('Ziemlich','Quite a lot'),tr('Sehr','Very much')];
- return '<fieldset class="question"><legend><span class="question-number">'+String(index+1).padStart(2,'0')+'</span>'+text(q.text)+'</legend><div class="rating-row">'+[1,2,3,4,5].map(v=>'<label class="rating '+(answer===v?'selected':'')+'" title="'+labels[v-1]+'"><input type="radio" id="answer-'+q.id+'-'+v+'" name="'+q.id+'" data-answer="'+q.id+'" value="'+v+'" '+(answer===v?'checked':'')+'><span>'+v+'</span><small>'+labels[v-1]+'</small></label>').join('')+'<label class="rating unsure '+(answer===null?'selected':'')+'"><input type="radio" id="answer-'+q.id+'-unknown" name="'+q.id+'" data-answer="'+q.id+'" value="unknown" '+(answer===null?'checked':'')+'><span>?</span><small>'+tr('Unsicher','Not sure')+'</small></label></div></fieldset>';
+ return '<fieldset class="question"><legend><span class="question-number">'+String(index+1).padStart(2,'0')+'</span>'+text(q.text)+'</legend><div class="rating-row">'+[1,2,3,4,5].map(v=>'<label class="rating '+(answer===v?'selected':'')+'" title="'+labels[v-1]+'"><input type="radio" id="answer-'+q.id+'-'+v+'" name="'+q.id+'" data-answer="'+q.id+'" value="'+v+'" '+(answer===v?'checked':'')+'><span>'+v+'</span><small>'+labels[v-1]+'</small></label>').join('')+'<label class="rating unsure '+(answer===null?'selected':'')+'"><input type="radio" id="answer-'+q.id+'-unknown" name="'+q.id+'" data-answer="'+q.id+'" value="unknown" '+(answer===null?'checked':'')+'><span>?</span><small>'+tr('Kann ich noch nicht einschätzen','I cannot judge yet')+'</small></label></div></fieldset>';
 }
 function readiness(){
  const c=state.context;
